@@ -25,6 +25,21 @@
                 <p>이름: <input type="text" name="name[]" required></p>
                 <p>학번: <input type="text" name="StudentNumber[]" required></p>
                 <p>역할: <input type="text" name="part[]" required></p>
+                
+                <p>성별:
+                    <input type="radio" name="gender[]" value="남자" required> 남자
+                    <input type="radio" name="gender[]" value="여자"> 여자
+                </p>
+
+                <p>언어:</p>
+                <label><input type="checkbox" name="languages[]" value="Python"> Python</label>
+                <label><input type="checkbox" name="languages[]" value="Java"> Java</label>
+                <label><input type="checkbox" name="languages[]" value="HTML"> HTML</label>
+                <label><input type="checkbox" name="languages[]" value="C++"> C++</label>
+                <label><input type="checkbox" name="languages[]" value="기타"> 기타</label>
+
+                <p>이메일: <input type="email" name="email[]" required></p>
+                <p>MBTI: <input type="text" name="mbti[]" required></p>
             </div>
         </div>
         <button type="button" onclick="addPerson()">추가</button>
@@ -43,6 +58,10 @@
                 <p>이름: <input type="text" name="name[]" required></p>
                 <p>학번: <input type="text" name="StudentNumber[]" required></p>
                 <p>역할: <input type="text" name="part[]" required></p>
+                <p>성별: 
+                    <input type="radio" name="gender" value="Male" required> 남자
+                    <input type="radio" name="gender" value="Female"> 여자
+                </p>
             `;
 
             // 입력 블록을 personContainer에 추가

@@ -16,13 +16,21 @@ def input():
 # 제출된 데이터를 처리하여 출력하는 경로
 @app.route('/result', methods=['POST'])
 def result():
-    # 각 학생의 이름과 학번 데이터를 리스트로 받음
+    # form 데이터 가져오기
     names = request.form.getlist('name[]')
     student_numbers = request.form.getlist('StudentNumber[]')
     parts = request.form.getlist('part[]')
+    genders = request.form.getlist('gender[]')
+    emails = request.form.getlist('email[]')
+    mbtis = request.form.getlist('mbti[]')
 
-    # 데이터를 템플릿으로 전달하여 출력 페이지 생성
-    return render_template('app_result.html', students=zip(names, student_numbers, parts))
+    # 컴퓨터 언어는 체크박스 배열로 수집
+    languages_all = request.form.getlist('languages[]')
+    languages_per_person = [languages_all[i:i+5] for i in range(0, len(languages_all), 5)]
+
+    # 데이터 템플릿으로 전달
+    students = zip(names, student_numbers, parts, genders, languages_per_person, emails, mbtis)
+    return render_template('app_result.html', students=students)
 
 @app.route('/contact')
 def contact_info():
