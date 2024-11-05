@@ -7,6 +7,7 @@
     <style>
         .container {
             display: flex;
+            flex-wrap: wrap;
             justify-content: center;
             gap: 20px;
             padding: 20px;
@@ -19,38 +20,29 @@
             width: 200px;
             text-align: center;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
         }
         h1 {
             text-align: center;
         }
     </style>
-    <script>
-        function showContactInfo() {
-            alert("긴급전화: 010-1234-5678");
-        }
-        function openContactPage() {
-            window.open("/contact", "contactPage", "width=600,height=400");
-        }
-    </script>
 </head>
 <body>
     <h1>학생 정보 출력</h1>
     <div class="container">
-        {% for name, student_number, part, gender, languages, email, mbti in students %}
+        {% for name, department, student_number, part, email, mbti, image in students %}
             <div class="student-block">
+                <img src="{{ image }}" alt="Student Image">
                 <p><strong>이름:</strong> {{ name }}</p>
+                <p><strong>학과:</strong> {{ department }}</p>
                 <p><strong>학번:</strong> {{ student_number }}</p>
                 <p><strong>역할:</strong> {{ part }}</p>
-                <p><strong>성별:</strong> {{ gender }}</p>
-                <p><strong>가능한 컴퓨터 언어:</strong> {{ languages | join(", ") }}</p>
                 <p><strong>이메일:</strong> {{ email }}</p>
                 <p><strong>MBTI:</strong> {{ mbti }}</p>
             </div>
+        {% else %}
+            <p>학생 정보가 없습니다.</p>
         {% endfor %}
     </div>
-    <footer>
-        <h5>📞 안내: <button onclick="showContactInfo()"> 팀 긴급연락</button> 
-            <button onclick="openContactPage()"> 팀 연락정보</button> </h5>
-    </footer> 
 </body>
 </html>
