@@ -38,5 +38,10 @@ def result():
     students = zip(names, departments, student_numbers, parts, emails, mbtis, images)
     return render_template('app_result.html', students=students)
 
+@app.route('/contact')
+def contact_info():
+    return render_template('app_contact.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
