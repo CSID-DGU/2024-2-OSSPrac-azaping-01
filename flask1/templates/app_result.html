@@ -1,48 +1,69 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>팀 구성원 정보 출력</title>
     <style>
         .container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 20px;
-            padding: 20px;
-        }
-        .student-block {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border: 1px solid #ccc;
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            border: 1px solid #ddd;
             border-radius: 8px;
-            width: 200px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: bold;
             text-align: center;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             margin-bottom: 20px;
         }
-        h1 {
-            text-align: center;
+
+        .row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .row:last-child {
+            border-bottom: none;
+        }
+
+        .key {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .value {
+            color: #555;
+            text-align: right;
+        }
+        
+        .student-image {
+            display: block;
+            margin: 0 auto 20px;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 50%;
         }
     </style>
 </head>
 <body>
-    <h1>학생 정보 출력</h1>
-    <div class="container">
-        {% for name, department, student_number, part, email, mbti, image in students %}
-            <div class="student-block">
-                <img src="{{ image }}" alt="Student Image">
-                <p><strong>이름:</strong> {{ name }}</p>
-                <p><strong>학과:</strong> {{ department }}</p>
-                <p><strong>학번:</strong> {{ student_number }}</p>
-                <p><strong>역할:</strong> {{ part }}</p>
-                <p><strong>이메일:</strong> {{ email }}</p>
-                <p><strong>MBTI:</strong> {{ mbti }}</p>
-            </div>
-        {% else %}
-            <p>학생 정보가 없습니다.</p>
+    {% for result in results %}
+    <div class="container student-container">
+        <img src="{{ result['images'] }}" alt="학생 사진" class="student-image">
+        <div class="title">{{ result['names'] }} 학생 정보</div>
+        {% for key, value in result.items() %}
+        {% if key != 'names' and key != 'images' %}
+        <div class="row">
+            <div class="key">{{ key }}</div>
+            <div class="value">{{ value }}</div>
+        </div>
+        {% endif %}
         {% endfor %}
     </div>
+    {% endfor %}
 </body>
 </html>
