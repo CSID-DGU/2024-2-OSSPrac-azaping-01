@@ -25,11 +25,11 @@ def result():
 
         student_numbers = request.form.getlist('StudentNumber[]')
         names = request.form.getlist('name[]')
-        genders = [request.form.get(f'gender{i}') for i in range(len(student_numbers))]  # 수정된 부분
+        genders = [request.form.get(f'gender{i}') for i in range(len(student_numbers))]
         departments = request.form.getlist('department[]')
         parts = request.form.getlist('part[]')
-        email_id = request.form.get('email_id')
-        email_domain = request.form.get('email_domain')
+        email_ids = request.form.getlist('email_id[]')
+        email_domains = request.form.getlist('email_domain')
         mbtis = request.form.getlist('mbti[]')
         languages = [request.form.getlist(f'languages{i}') for i in range(len(student_numbers))]
 
@@ -40,7 +40,7 @@ def result():
                 '학과': departments[i],
                 '학번': student_numbers[i],
                 '역할': parts[i],
-                'Email': f"{email_id}@{email_domain}" if email_id and email_domain else None,
+                'Email': f"{email_ids[i]}@{email_domains[i]}",
                 'MBTI': mbtis[i],
                 '프로그래밍 언어': ', '.join(languages[i]) if languages[i] else 'None',
                 'images': student_images.get(student_numbers[i], "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-azaping-01/main/pic/default.jpg")
