@@ -20,23 +20,34 @@ def input():
 
 @app.route('/result', methods=['POST'])
 def result():
-    # 수집된 데이터를 확인하기 위해 각 필드를 출력합니다.
-    names = request.form.getlist('name[]')
-    departments = request.form.getlist('department[]')
-    student_numbers = request.form.getlist('StudentNumber[]')
-    parts = request.form.getlist('part[]')
-    emails = request.form.getlist('email[]')
-    mbtis = request.form.getlist('mbti[]')
+    if request.method == 'POST':
+        results = []
 
-    images = [
-        student_images.get(student_number, "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-azaping-01/main/pic/default.jpg")
-        for student_number in student_numbers
-    ]
+        # 각 학생마다 데이터를 수집합니다.
+        student_numbers = request.form.getlist('StudentNumber[]')
+        names = request.form.getlist('name[]')
+        genders = [request.form.get(f'gender{i}') for i in range(len(student_numbers))]  # 수정된 부분
+        departments = request.form.getlist('department[]')
+        parts = request.form.getlist('part[]')
+        emails = request.form.getlist('email[]')
+        mbtis = request.form.getlist('mbti[]')
+        languages = [request.form.getlist(f'languages{i}') for i in range(len(student_numbers))]
 
+        for i in range(len(student_numbers)):
+            result = {
+                '이름': names[i],
+                '성별': genders[i],
+                '학과': departments[i],
+                '학번': student_numbers[i],
+                '역할': parts[i],
+                'Email': emails[i],
+                'MBTI': mbtis[i],
+                '프로그래밍 언어': ', '.join(languages[i]) if languages[i] else 'None',
+                'images': student_images.get(student_numbers[i], "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-azaping-01/main/pic/default.jpg")
+            }
+            results.append(result)
 
-    # 학생 정보를 zip으로 묶어 템플릿에 전달
-    students = zip(names, departments, student_numbers, parts, emails, mbtis, images)
-    return render_template('app_result.html', students=students)
+        return render_template('app_result.html', results=results)
 
 @app.route('/contact')
 def contact_info():
