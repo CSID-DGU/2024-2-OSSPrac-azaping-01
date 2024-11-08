@@ -64,6 +64,18 @@
             width: 50%; /* 도메인 부분을 좀 더 넓게 */
             margin-left: 8px; /* 간격 추가 */
         }
+        .programming-languages {
+            margin-top: 10px; /* 제목과 체크박스 간 간격 */
+        }
+
+        .programming-languages label {
+            display: inline-block; /* 각 항목이 새로운 줄에 나오는 것 */
+            margin-bottom: 10px; /* 각 항목 간 간격 */
+        }
+        .programming-languages input[type="checkbox"] {
+            margin-bottom: 10px; /* 체크박스들 간 간격을 주기 위해 */
+        }
+
         button {
             background-color: #F6BD00; 
             color: #fff; 
@@ -113,13 +125,12 @@
                         </select>
                     </div>
                 </p>
-                <p>Programming Languages
+                <p class="programming-languages">Programming Languages </p>
                     <label><input type="checkbox" value="Python" name="languages0"/>Python</label>
                     <label><input type="checkbox" value="Java" name="languages0"/>Java</label>
                     <label><input type="checkbox" value="C++" name="languages0"/>C++</label>
                     <label><input type="checkbox" value="Html" name="languages0"/>Html</label>
                     <label><input type="checkbox" value="Etc" name="languages0"/>Etc</label>
-                </p>
             </div>
         </div>
         <div class="button-container">
