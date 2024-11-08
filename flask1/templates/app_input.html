@@ -51,6 +51,19 @@
             font-family: 'SUIT', monospace; 
             width: 80%;
         }
+        .email-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .email-container input[type="text"] {
+            width: 50%; /* 이메일 ID 부분을 좀 더 좁게 */
+        }
+
+        .email-container select {
+            width: 50%; /* 도메인 부분을 좀 더 넓게 */
+            margin-left: 8px; /* 간격 추가 */
+        }
         button {
             background-color: #F6BD00; 
             color: #fff; 
@@ -88,15 +101,17 @@
                 <p>역할: <input type="text" name="part[]" required></p>
                 <p>MBTI: <input type="text" name="mbti[]" required></p>
                 <p>Email
-                    <input type="text" name="email_id[]" required> @
-                    <label for="mySelect"></label>
-                    <select id="mySelect" name="email_domain" required>
-                        <option value="">주소</option>
-                        <option value="gmail.com">gmail.com</option>
-                        <option value="naver.com">naver.com</option>
-                        <option value="dgu.ac.kr">dgu.ac.kr</option>
-                        <option value="daum.com">daum.com</option>
-                    </select>
+                    <div class="email-container">
+                        <input type="text" name="email_id[]" required> @
+                        <label for="mySelect"></label>
+                        <select id="mySelect" name="email_domain" required>
+                            <option value="">주소</option>
+                            <option value="gmail.com">gmail.com</option>
+                            <option value="naver.com">naver.com</option>
+                            <option value="dgu.ac.kr">dgu.ac.kr</option>
+                            <option value="daum.com">daum.com</option>
+                        </select>
+                    </div>
                 </p>
                 <p>Programming Languages
                     <label><input type="checkbox" value="Python" name="languages0"/>Python</label>
