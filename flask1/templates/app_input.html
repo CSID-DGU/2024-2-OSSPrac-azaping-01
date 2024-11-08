@@ -15,10 +15,23 @@
         body {
             font-family: 'SUIT', sans-serif;
             background-color: #FFF6D8;
+            display: flex;
+            justify-content: center;  /* 수평 중앙 정렬 */
+            align-items: center;  /* 수직 중앙 정렬 */
+            height: 100vh;  /* 전체 화면 높이 */
+            margin: 0;  /* 기본 여백 제거 */
         }
         h1{
             color: #F6BD00;
             font-family: 'SUIT', sans-serif;
+            text-align: center;
+        }
+        .form-container {
+            width: 100%;
+            max-width: 600px; /* 폼의 최대 너비 설정 */
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #FFF6D8;
         }
         .person-block {
             margin-bottom: 10px; /* 아래 여백 줄이기 */
@@ -28,28 +41,39 @@
             background-color: #FFF6D8;
             width: 100%; /* 부모 요소의 너비에 맞게 설정 */
             max-width: 350px; /* 최대 너비 제한 */
+            margin-left: auto;
+            margin-right: auto;
         }
         
         input[type="text"] {
             border: 1px solid #FFF6D8; 
             padding: 8px;
             font-family: 'SUIT', monospace; 
+            width: 80%;
         }
         button {
             background-color: #F6BD00; 
             color: #fff; 
             border: none;
-            padding: 10px 10px;
+            padding: 10px 20px;
             border-radius: 5px;
             font-family: 'SUIT', sans-serif; 
             cursor: pointer;
+            margin-right: 10px;
         }
         button:hover {
             background-color: #EFB001; 
         }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
+    <div class="form-container">
     <h1>학생 정보 입력</h1>
     <form action="/result" method="POST" id="studentForm">
         <div id="personContainer">
@@ -83,9 +107,12 @@
                 </p>
             </div>
         </div>
-        <button type="button" onclick="addPerson()">추가</button>
-        <button type="submit">제출</button>
+        <div class="button-container">
+            <button type="button" onclick="addPerson()">추가</button>
+            <button type="submit">제출</button>
+        </div>
     </form>
+</div>
 
     <script>
         // 새 입력 필드를 추가하는 함수
