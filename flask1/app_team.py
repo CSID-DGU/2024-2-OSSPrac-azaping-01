@@ -42,7 +42,7 @@ def result():
                 '역할': parts[i],
                 'Email': f"{email_ids[i]}@{email_domains[i]}",
                 'MBTI': mbtis[i],
-                '프로그래밍 언어': ', '.join(languages[i]) if languages[i] else 'None',
+                'Programming Languages': ', '.join(languages[i]) if languages[i] else 'None',
                 'images': student_images.get(student_numbers[i], "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-azaping-01/main/pic/default.jpg")
             }
             results.append(result)
