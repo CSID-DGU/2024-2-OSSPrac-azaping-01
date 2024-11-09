@@ -5,7 +5,7 @@ app = Flask(__name__)
 student_images = {
     "2020110401": "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-azaping-01/main/pic/2020110401.jpg",
     "2021113455": "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-azaping-01/main/pic/2021113455.jpg",
-    "2022111520": "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-azaping-01/main/pic/rm_2022111520.jpg",
+    "2022111520": "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-azaping-01/main/pic/2022111520.jpg",
     "2020111670": "https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-azaping-01/main/pic/2020111670.jpg",
     # 다른 학번에 따른 URL 추가 가능
 }
