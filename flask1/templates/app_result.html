@@ -2,17 +2,32 @@
 <html lang="en">
 <head>
     <style>
+        @font-face {
+            font-family: 'SUIT';
+            font-weight: 700;
+            font-style: normal;
+            src: url('https://cdn.jsdelivr.net/gh/webfontworld/sunn/SUIT-Bold.woff2') format('woff2')
+        }
+        body {
+            background-color: #FFF6D8;
+        }
+        
         .container {
+            font-family: 'SUIT', sans-serif;
+            color: #F6BD00;
+            background-color: #FFF6D8;
             width: 100%;
             max-width: 600px;
             margin: 0 auto;
-            border: 1px solid #ddd;
+            border: 2px solid #FFE182;
             border-radius: 8px;
             padding: 20px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
         .title {
+            font-family: 'SUIT', sans-serif;
+            color: #F6BD00;
             font-size: 24px;
             font-weight: bold;
             text-align: center;
@@ -23,7 +38,7 @@
             display: flex;
             justify-content: space-between;
             padding: 10px 0;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 0.5px solid #FFE182;
         }
 
         .row:last-child {
@@ -31,11 +46,13 @@
         }
 
         .key {
+            font-family: 'SUIT', sans-serif;
             font-weight: bold;
-            color: #333;
+            color:#555;
         }
 
         .value {
+            font-family: 'SUIT', sans-serif;
             color: #555;
             text-align: right;
         }
@@ -46,7 +63,7 @@
             width: 150px;
             height: 150px;
             object-fit: cover;
-            border-radius: 50%;
+            border-radius: 30%;
         }
     </style>
 </head>
