@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+    <form action="/result" method="POST">
+        <p>Name <input type="text" name="name" required></p>
+        <p>Student Number <input type="text" id="StudentNumber" name="StudentNumber" required /></p>
+        
+        <p>Gender <br><br>
+            <input type="radio" name="gender" value="Male" required> Male
+            <input type="radio" name="gender" value="Female"> Female
+        </p>
+        
+        <p>Major <input type="text" id="Major" name="Major" required /></p>
+        
+        <p>Email
+            <input type="text" name="email_id" placeholder="username" required> @
+            <select name="email_domain" required>
+                <option value="">Select domain</option>
+                <option value="gmail.com">gmail.com</option>
+                <option value="naver.com">naver.com</option>
+                <option value="dgu.ac.kr">dgu.ac.kr</option>
+                <option value="daum.com">daum.com</option>
+            </select>
+        </p>
+
+        <p>Programming Languages <br><br>
+            <input type="checkbox" name="languages" value="html"> HTML
+            <input type="checkbox" name="languages" value="css"> CSS
+            <input type="checkbox" name="languages" value="java"> JAVA
+            <input type="checkbox" name="languages" value="cpp"> C++
+            <input type="checkbox" name="languages" value="python"> Python
+            <input type="checkbox" name="languages" value="ETC"> ETC
+        </p>
+        
+        <button type="submit" name="submit" value="submit">submit</button>
+    </form>
+</body>
+</html>
