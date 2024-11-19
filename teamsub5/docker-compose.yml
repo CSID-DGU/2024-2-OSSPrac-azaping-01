@@ -10,5 +10,3 @@ services:
   backapp:
     build: ./BackEnd
     image: jhj01/team5:backapp-latest  # 이미지 이름을 설정하는 속성입니다.
-    ports:
-      - "5001:5000"
