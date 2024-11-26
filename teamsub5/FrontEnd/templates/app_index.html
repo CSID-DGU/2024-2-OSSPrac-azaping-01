@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"> -->
+    <title>01-Azaping</title>
+    <style>
+        @font-face {
+            font-family: 'SUIT';
+            font-weight: 700;
+            font-style: normal;
+            src: url('https://cdn.jsdelivr.net/gh/webfontworld/sunn/SUIT-Bold.woff2') format('woff2')
+        }
+
+        body {
+            font-family: 'SUIT', sans-serif;
+            background-color: #FFF6D8;
+            display: flex;
+            flex-direction: column;
+            align-items: center;  
+            justify-content: center;
+            height: 100vh;  
+            margin: 0;  
+        }
+        h1{
+            color: #F6BD00;
+            font-family: 'SUIT', sans-serif;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            padding: 30px;
+            border: 2px solid #FFE182;
+            border-radius: 8px;
+            margin-top: 20px;
+            text-align: center;
+            width: 600px;
+            margin: 0 auto;
+        }
+        /*.student-block {
+            background-color: #feffb3fb;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            width: 1000px;
+            text-align: center;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }*/
+
+        h3, h5 {
+            text-align: center;
+            color : #555;
+        }
+
+        button {
+            background-color: #F6BD00; 
+            color: #fff; 
+            border: none;
+            padding: 5px 15px;
+            border-radius: 5px;
+            font-family: 'SUIT', sans-serif; 
+            cursor: pointer;
+            margin-right: 10px;
+            font-size: 0.9em;
+        }
+        button:hover {
+            background-color: #EFB001; 
+        }
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        footer {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+        
+    </style>
+    <script>
+        function showContactInfo() {
+            alert("긴급전화: 010-4565-5373");
+        }
+        function openContactPage() {
+            window.open("/contact", "contactPage", "width=600,height=400")
+        }
+        function openInputPage() {
+            window.open("/input", "InputPage", "width=800,height=600");
+        }
+    </script>
+</head>
+<body>
+    <h1>24-2 OSSPrac 01-Azaping</h1>
+
+    <div class="container">
+        <div class="student-block">
+            <img src="https://raw.githubusercontent.com/CSID-DGU/2024-2-OSSPrac-azaping-01/main/pic/azaping-01.png", alt="이미지가 없습니다.", width="200">
+            <h3> 아자핑의 팀원을 소개해요! </h3>
+            <div class="button-container">
+                <button onclick="openInputPage()"> 알아보기 </button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <h5>📞 안내: <button onclick="showContactInfo()"> 팀 긴급연락</button> 
+            <button onclick="openContactPage()"> 팀 연락정보</button> </h5>
+    </footer>
+</body>
+</html>
