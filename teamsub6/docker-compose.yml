@@ -1,0 +1,12 @@
+version: "3.0"
+
+services:
+  frontapp:
+    build: ./FrontEnd
+    image: jhj01/team5:frontapp-latest  # 이미지 이름을 설정하는 속성입니다.
+    ports:
+      - "5000:5000"  
+
+  backapp:
+    build: ./BackEnd
+    image: jhj01/team5:backapp-latest  # 이미지 이름을 설정하는 속성입니다.
