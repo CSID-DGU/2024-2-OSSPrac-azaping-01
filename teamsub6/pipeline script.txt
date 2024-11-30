@@ -1,0 +1,59 @@
+pipeline {
+    agent any
+
+    triggers {
+        pollSCM('*/3 * * * *')
+    }
+    
+    environment {
+        DOCKER_CREDS = credentials('docker-hub') // Docker Hub 자격 증명
+    }
+    
+    stages {
+        stage('Prepare') {
+            steps {                         
+                git url: "https://github.com/CSID-DGU/2024-2-OSSPrac-azaping-01.git",
+                    branch: 'main',
+                    credentialsId: 'github'
+            }
+        }
+
+        stage('Build') {
+            steps {
+                dir('/var/jenkins_home/workspace/task6/teamsub6') {
+                    sh 'echo $DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin'
+                    sh 'docker compose build'
+                }
+            }
+        }
+
+        stage('Tag') {
+            steps {
+                sh 'docker tag jhj01/team6:frontapp-latest $DOCKER_CREDS_USR/teamsub6-frontapp:$BUILD_NUMBER'
+                sh 'docker tag jhj01/team6:backapp-latest $DOCKER_CREDS_USR/teamsub6-backapp:$BUILD_NUMBER'
+            }
+        }
+
+        stage('Push') {
+            steps {
+                sh 'echo $DOCKER_CREDS_PSW | docker login -u $DOCKER_CREDS_USR --password-stdin'
+                sh 'docker push $DOCKER_CREDS_USR/teamsub6-frontapp:$BUILD_NUMBER'
+                sh 'docker push $DOCKER_CREDS_USR/teamsub6-backapp:$BUILD_NUMBER'
+            }
+        }
+
+        stage('Pull & Run') {
+            steps {
+                script {
+                    // Docker Hub에서 이미지 다운로드
+                    sh 'docker pull $DOCKER_CREDS_USR/teamsub6-frontapp:$BUILD_NUMBER'
+                    sh 'docker pull $DOCKER_CREDS_USR/teamsub6-backapp:$BUILD_NUMBER'
+                    
+                    // 컨테이너 실행
+                    sh 'docker run -d -p 5000:5000 $DOCKER_CREDS_USR/teamsub6-frontapp:$BUILD_NUMBER'
+                    sh 'docker run -d -p 8000:8000 $DOCKER_CREDS_USR/teamsub6-backapp:$BUILD_NUMBER'
+                }
+            }
+        }
+    }
+}

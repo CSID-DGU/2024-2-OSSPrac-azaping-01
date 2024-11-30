@@ -12,11 +12,11 @@ student_images = {
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('app_index.html')
 
 @app.route('/input')
 def input():
-    return render_template('input.html')
+    return render_template('app_input.html')
 
 @app.route('/result', methods=['POST'])
 def result():
@@ -47,11 +47,11 @@ def result():
             }
             results.append(result)
 
-        return render_template('result.html', results=results)
+        return render_template('app_result.html', results=results)
 
 @app.route('/contact')
 def contact_info():
-    return render_template('contact.html')
+    return render_template('app_contact.html')
 
 
 if __name__ == '__main__':
